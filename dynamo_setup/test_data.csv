@@ -1,0 +1,16 @@
+propertyId,title,description,price,location,bedrooms,bathrooms,square_meters,year_built,property_type,done
+1,"Luxury Apartment in Zurich","This is a luxury apartment located in the heart of Zurich.",2000000,"Zurich, Switzerland",3,2,100,2000,"Apartment",True
+2,"Spacious House in Geneva","A spacious and beautiful house in Geneva.",3000000,"Geneva, Switzerland",5,3,200,1990,"House",False
+3,"Cozy Apartment in Bern","A cozy and affordable apartment in Bern.",1500000,"Bern, Switzerland",2,1,80,2005,"Apartment",True
+4,"Modern House in Lausanne","A modern house with a beautiful view in Lausanne.",2500000,"Lausanne, Switzerland",4,2,150,2010,"House",False
+5,"Comfortable Apartment in Lucerne","A comfortable apartment in the city center of Lucerne.",1800000,"Lucerne, Switzerland",3,2,90,2000,"Apartment",True
+6,"Elegant House in Zug","An elegant house in the peaceful city of Zug.",3500000,"Zug, Switzerland",6,3,250,1995,"House",False
+7,"Modern Apartment in Basel","A modern apartment in the vibrant city of Basel.",1600000,"Basel, Switzerland",2,1,85,2003,"Apartment",True
+8,"Traditional House in St. Gallen","A traditional Swiss house in St. Gallen.",2700000,"St. Gallen, Switzerland",5,2,200,1980,"House",False
+9,"Lake View Apartment in Lugano","An apartment with a beautiful lake view in Lugano.",1900000,"Lugano, Switzerland",3,2,95,2001,"Apartment",True
+10,"Family House in Fribourg","A perfect family house in the bilingual city of Fribourg.",2400000,"Fribourg, Switzerland",4,2,180,1998,"House",False
+11,"City Center Apartment in Zurich","An apartment located in the city center of Zurich.",2100000,"Zurich, Switzerland",3,2,100,2002,"Apartment",True
+12,"Peaceful House in Geneva","A peaceful house located in a quiet neighborhood in Geneva.",3100000,"Geneva, Switzerland",5,3,210,1991,"House",False
+13,"Budget Apartment in Bern","A budget-friendly apartment in Bern.",1550000,"Bern, Switzerland",2,1,82,2006,"Apartment",True
+14,"Luxury House in Lausanne","A luxury house with a panoramic view in Lausanne.",2550000,"Lausanne, Switzerland",4,2,155,2011,"House",False
+15,"Central Apartment in Lucerne","An apartment in the central location of Lucerne.",1850000,"Lucerne, Switzerland",3,2,92,2000,"Apartment",True
