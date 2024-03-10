@@ -6,7 +6,7 @@ class Property(BaseModel):
     propertyId: str = 0
     title: Optional[str] = None
     description: Optional[str] = None
-    price: Optional[Decimal] = None  # In euros
+    price: Optional[Decimal] = None 
     location: Optional[str] = None
     bedrooms: Optional[int] = None
     bathrooms: Optional[int] = None
