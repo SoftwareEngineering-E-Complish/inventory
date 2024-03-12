@@ -1,7 +1,8 @@
 #import debugpy
 #debugpy.listen(("0.0.0.0", 5678))
-from app.services.property_service import create_property_autoKey, get_all_properties, get_property, get_properties_by_attributes
-from app.models.property import Property
+from app.services.property_service import create_property_autoKey, get_all_properties, get_property, get_properties_by_attributes, query_properties_by_attributes
+from app.models.property import Property, PropertyType
+from app.models.property_query import PropertyQuery, QueryBasic
 from typing import List
 from fastapi import FastAPI, HTTPException
 from typing import Optional
@@ -9,6 +10,19 @@ from fastapi import HTTPException, Depends
 from decimal import Decimal 
 
 app = FastAPI()
+@app.get("/schema/example")
+def get_schema():
+    return {'price': {'name': 'prie', 'type': 'int', 'description': 'Price of the property'}}
+
+@app.get("/schema/propertyQuery")
+def get_schema():
+    #return Property.schema_json(indent=4)
+    return PropertyQuery.model_json_schema(by_alias=True)
+
+@app.get("/schema/sampleType")
+def get_schema():
+    #return Property.schema_json(indent=4)
+    return QueryBasic.model_json_schema(by_alias=True)
 
 @app.get("/properties/", response_model=List[Property])
 def fetch_all_properties():
@@ -29,7 +43,7 @@ def query_params_to_property(title: Optional[str] = None,
                              bathrooms: Optional[int] = None,
                              square_meters: Optional[int] = None,
                              year_built: Optional[int] = None,
-                             property_type: Optional[str] = None,
+                             property_type: Optional[PropertyType] = None,
                              done: Optional[bool] = None) -> Property:
     return Property(title=title,
                     description=description,
@@ -43,9 +57,13 @@ def query_params_to_property(title: Optional[str] = None,
                     done=done)
 
 @app.get("/queryPropertiesByAttributes", response_model=List[Property], description="Fetch all the Properties matching the fields provided as parameters")
-def fetch_properties_by_attrivutes(exampleProperty: Property = Depends(query_params_to_property)):
-    #return [exampleProperty]
+def fetch_properties_by_attributes(exampleProperty: Property = Depends(query_params_to_property)):
     return get_properties_by_attributes(exampleProperty)
+
+
+@app.get("/queryProperties", response_model=List[Property], description="Query the properties based on the fields provided")
+def query_properties(query: PropertyQuery = Depends(PropertyQuery)):
+    return query_properties_by_attributes(query)
 
 @app.post("/properties/", response_model=Property)
 def create_prop(property: Property):
