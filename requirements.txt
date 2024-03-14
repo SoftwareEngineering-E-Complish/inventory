@@ -4,3 +4,4 @@ pydantic
 boto3
 debugpy
 pandas
+jsonref
