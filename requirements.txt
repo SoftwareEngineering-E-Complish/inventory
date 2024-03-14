@@ -5,3 +5,4 @@ boto3
 debugpy
 pandas
 jsonref
+pytest

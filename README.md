@@ -32,7 +32,6 @@ In the current setup, DynamoDB does not use any docker volume for persisting dat
 ### Initializing the DynamoDB Table
 
 DynamoDB is initialized automatically from the `start.sh` script.
-The first time you setup this service, make sure that the above script is executable.
 
 ## API Endpoints
 
@@ -47,7 +46,12 @@ Currently only create and fetch operations are supported.
 
 ## Testing
 
-There is no automated testing coverage yet.
+Run the tests:
+`/code/pytest`
+
+Get report regarding the code coverage:
+1. `coverage run -m pytest`
+2. `coverage report -m`
 
 ##  Model
 
