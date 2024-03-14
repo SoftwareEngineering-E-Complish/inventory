@@ -1,13 +1,11 @@
 #import debugpy
 #debugpy.listen(("0.0.0.0", 5678))
-from app.services.property_service import create_property_autoKey, get_all_properties, get_property, get_properties_by_attributes, query_properties_by_attributes
-from app.models.property import Property, PropertyType
-from app.models.property_query import PropertyQuery, QueryBasic
+from app.services.property_service import create_property_autoKey, get_all_properties, get_property, query_properties_by_attributes
+from app.models.property import Property
+from app.models.property_query import PropertyQuery
 from typing import List
 from fastapi import FastAPI, HTTPException
-from typing import Optional
 from fastapi import HTTPException, Depends
-from decimal import Decimal 
 
 app = FastAPI()
 
@@ -25,7 +23,6 @@ def fetch_property_by_key(property_id: str):
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
     return item
-
 
 @app.get("/queryProperties", response_model=List[Property], description="Query the properties based on the fields provided")
 def query_properties(query: PropertyQuery = Depends(PropertyQuery)):
