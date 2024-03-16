@@ -6,3 +6,4 @@ debugpy
 pandas
 jsonref
 pytest
+coverage
