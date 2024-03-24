@@ -7,3 +7,5 @@ pandas
 jsonref
 pytest
 coverage
+sqlalchemy
+psycopg2-binary

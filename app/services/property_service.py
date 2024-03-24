@@ -4,8 +4,8 @@ from botocore.exceptions import ClientError
 from boto3.dynamodb.conditions import Attr
 from fastapi import HTTPException
 import uuid
-from app.models.property import Property
-from app.models.property_query import PropertyQuery
+from app.schemas.property import Property
+from app.schemas.property_query import PropertyQuery
 from botocore.exceptions import ClientError
 from fastapi import HTTPException
 

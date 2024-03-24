@@ -1,39 +1,19 @@
-from pydantic import BaseModel, Field
-from typing import Any, Dict, Optional
-from decimal import Decimal
-from enum import Enum
+from sqlalchemy import Column, Integer, String, Numeric, Enum, Boolean
+from sqlalchemy.ext.declarative import declarative_base
 
-class PropertyType(Enum):
-    APARTMENT = "Apartment"
-    HOUSE = "House"
+Base = declarative_base()
 
-class SwissCities(Enum):
-    ZURICH = "Zurich"
-    GENEVA = "Geneva"
-    BASEL = "Basel"
-    LAUSANNE = "Lausanne"
-    BERN = "Bern"
-    LUCERNE = "Lucerne"
-    ST_GALLEN = "St. Gallen"
-    BIEL = "Biels"
-    THUN = "Thun"
-    WINTERTHUR = "Winterthur"
+class Property(Base):
+    __tablename__ = 'property'
 
-class Property(BaseModel):
-    propertyId: str = 0
-    title: Optional[str] = None
-    description: Optional[str] = None
-    price: Optional[Decimal] = None 
-    location: Optional[SwissCities] = None
-    bedrooms: Optional[int] = Field(None, ge=1, le=10, description="Number of bedrooms in the property")
-    bathrooms: Optional[int] = None
-    square_meters: Optional[int] = None
-    year_built: Optional[int] = None
-    property_type: Optional[PropertyType] = Field(None, description="Type of the property")
-
-    done: Optional[bool] = None
-
-    # Convert the Property object to a dictionary ensuring that the Enum values are converted to their string representation
-    # This is needed to ensure that the Enum values are serialized correctly for DynamoDB
-    def model_dump(self) -> Dict[str, Any]:
-        return {k: (v.value if isinstance(v, Enum) else v) for k, v in super().model_dump().items()}
+    propertyId = Column(Integer, primary_key=True, autoincrement=True)
+    title = Column(String)
+    description = Column(String)
+    price = Column(Numeric)
+    location = Column(String)
+    bedrooms = Column(Integer)
+    bathrooms = Column(Integer)
+    square_meters = Column(Integer)
+    year_built = Column(Integer)
+    property_type = Column(String)
+    done = Column(Boolean)
