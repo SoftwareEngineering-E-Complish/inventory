@@ -1,7 +1,7 @@
-from sqlalchemy import create_engine, select
+from sqlalchemy import create_engine, select, func
 from sqlalchemy.orm import sessionmaker
 from app.models.property import Property, Base
-from app.schemas.property_query import PropertyQuery
+from app.schemas.property_query import PropertyQuery, ResultOrder
 
 # Specify the database URL
 DATABASE_URL = "postgresql://postgres:postgres@postgres-db:5432/postgres"  # Use your actual database URL
@@ -36,13 +36,18 @@ def fetch_all():
 
 def fetch_by_attributes(query: PropertyQuery):
     db = SessionLocal()
-    statement = set_attributes(query)
+    count_statement = select(func.count()).select_from(Property)
+    count_statement = set_attributes(query, count_statement)
+    count = db.execute(count_statement).scalar()
+    statement = select(Property)
+    statement = set_attributes(query, statement)
+    statement = set_pagination(query, statement)
+    statement = set_order(query, statement)
     properties = db.execute(statement).scalars().all()
     db.close()
-    return properties
+    return properties, count
 
-def set_attributes(query: PropertyQuery)-> select:
-    statement = select(Property)
+def set_attributes(query: PropertyQuery,  statement: select)-> select:
     if query.price_min:
         statement = statement.where(Property.price >= query.price_min)
     if query.price_max:
@@ -67,4 +72,35 @@ def set_attributes(query: PropertyQuery)-> select:
         statement = statement.where(Property.property_type == query.property_type.value)
     if query.location:
         statement = statement.where(Property.location == query.location.value)
+    return statement
+
+def set_pagination(query: PropertyQuery, statement: select)-> select:
+    if query.limit:
+        statement = statement.limit(query.limit)
+    if query.offset:
+        statement = statement.offset(query.offset)
+    return statement
+
+def set_order(query: PropertyQuery, statement: select) -> select:
+    if query.order:
+        if query.order == ResultOrder.PRICE_ASC:
+            statement = statement.order_by(Property.price)
+        elif query.order == ResultOrder.PRICE_DESC:
+            statement = statement.order_by(Property.price.desc())
+        elif query.order == ResultOrder.BEDROOMS_ASC:
+            statement = statement.order_by(Property.bedrooms)
+        elif query.order == ResultOrder.BEDROOMS_DESC:
+            statement = statement.order_by(Property.bedrooms.desc())
+        elif query.order == ResultOrder.BATHROOMS_ASC:
+            statement = statement.order_by(Property.bathrooms)
+        elif query.order == ResultOrder.BATHROOMS_DESC:
+            statement = statement.order_by(Property.bathrooms.desc())
+        elif query.order == ResultOrder.SQUARE_METERS_ASC:
+            statement = statement.order_by(Property.square_meters)
+        elif query.order == ResultOrder.SQUARE_METERS_DESC:
+            statement = statement.order_by(Property.square_meters.desc())
+        elif query.order == ResultOrder.YEAR_BUILT_ASC:
+            statement = statement.order_by(Property.year_built)
+        elif query.order == ResultOrder.YEAR_BUILT_DESC:
+            statement = statement.order_by(Property.year_built.desc())
     return statement
