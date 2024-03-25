@@ -3,7 +3,7 @@
 from app.services.property_service import create_property_autoKey, get_all_properties, get_property, query_properties_by_attributes
 from app.schemas.property import Property
 from app.schemas.property_query import PropertyQuery
-from app.schemas.property_query_paginated import PropertyQueryPaginated
+from app.schemas.property_query_paginated import PropertyListPaginated
 from app.services.property_relational_service import insert_property, fetch_property, fetch_all, fetch_by_attributes
 from app.utils.entity_mapper import schemaToModel, modelToSchema
 from typing import List
@@ -31,34 +31,15 @@ def fetch_property_by_key(property_id: str):
         raise HTTPException(status_code=404, detail="Item not found")
     return item
 
-@app.get("/queryProperties", response_model=PropertyQueryPaginated, description="Query the properties based on the fields provided")
+@app.get("/queryProperties", response_model=PropertyListPaginated, description="Query the properties based on the fields provided")
 def query_properties(query: PropertyQuery = Depends(PropertyQuery)):
     propertiesModel, countAll = fetch_by_attributes(query)
     properties = []
-    for propertyModel in propertiesModel:
+    for propertyModel in propertiesModel: # type: ignore
         properties.append(modelToSchema(propertyModel))
-    return PropertyQueryPaginated(entries=properties, total=countAll, offset=query.offset, limit=query.limit)
+    return PropertyListPaginated(entries=properties, total=countAll, offset=query.offset, limit=query.limit) #type: ignore
 
 @app.post("/properties/", response_model=Property)
 def create_property_listing(property: Property):
     insert_property(schemaToModel(property))
     return property
-
-"""
-@app.put("/items/{item_id}", response_model=Property)
-def update_todo_item(item_id: str, updates: Property):
-    item = update_item(item_id, updates.model_dump())
-    if not item:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return item"""
-
-"""
-@app.delete("/items/{item_id}", response_model=dict)
-def delete_todo_item(item_id: str):
-    response = delete_item(item_id)
-    if 'ResponseMetadata' not in response:
-        raise HTTPException(status_code=404, detail="Item not found")
-    return {"message": "Item deleted successfully"} """
-
-
-
