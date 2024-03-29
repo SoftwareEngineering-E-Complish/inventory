@@ -1,6 +1,5 @@
 #import debugpy
 #debugpy.listen(("0.0.0.0", 5678))
-from app.services.property_service import create_property_autoKey, get_all_properties, get_property, query_properties_by_attributes
 from app.schemas.property import Property
 from app.schemas.property_query import PropertyQuery
 from app.schemas.property_query_paginated import PropertyListPaginated
@@ -41,5 +40,5 @@ def query_properties(query: PropertyQuery = Depends(PropertyQuery)):
 
 @app.post("/properties/", response_model=Property)
 def create_property_listing(property: Property):
-    insert_property(schemaToModel(property))
-    return property
+    property_with_key = insert_property(schemaToModel(property))
+    return modelToSchema(property_with_key)

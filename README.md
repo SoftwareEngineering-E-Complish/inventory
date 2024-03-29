@@ -45,11 +45,12 @@ http://localhost:7200/openapi.json
 Currently only create and fetch operations are supported.
 
 ## Testing
+Sonar Cube executes the tests and test the code coverage automatically whenever develop branch is invoked.
 
-Run the tests:
-`/code/pytest`
+Additionally you can manually Run the tests from the `/code` path, by executing:
+`pytest`
 
-Get report regarding the code coverage:
+And produce the code coverage report:
 1. `coverage run -m pytest`
 2. `coverage report -m`
 
