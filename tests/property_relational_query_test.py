@@ -3,7 +3,6 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import unittest
-from boto3.dynamodb.conditions import Attr
 from sqlalchemy import Select
 from app.models.property import Property
 from app.schemas.property_query import PropertyQuery , ResultOrder
