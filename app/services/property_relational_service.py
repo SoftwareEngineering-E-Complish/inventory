@@ -6,7 +6,7 @@ from typing import Tuple
 from os import getenv
 
 # Specify the database URL
-DATABASE_URL = getenv("DATABASE_URL")
+DATABASE_URL = getenv("DATABASE_URL","postgresql://:@db:5432/")
 
 engine = create_engine(str(DATABASE_URL))
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
