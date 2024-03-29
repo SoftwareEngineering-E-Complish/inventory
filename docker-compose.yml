@@ -11,6 +11,8 @@ services:
       - .:/code
     depends_on:
       - postgres-db
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@postgres-db:5432/postgres"
       
   postgres-db:
     image: postgres:latest

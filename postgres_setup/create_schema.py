@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 from app.models.property import Base
 
 # Specify the database URL
-DATABASE_URL = "postgresql://postgres:postgres@postgres-db:5432/postgres"  # Use your actual database URL
+DATABASE_URL = str(os.getenv("DATABASE_URL"))
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
