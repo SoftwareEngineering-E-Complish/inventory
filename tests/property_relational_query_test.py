@@ -172,3 +172,8 @@ class TestPropertyQuery(unittest.TestCase):
         conditions = set_order(query, Select(Property))
         expectedValue = Select(Property).order_by(Property.year_built.desc())
         self.assertEqual(str(conditions), str(expectedValue))
+
+    def test_order_no_order(self):
+        query = PropertyQuery() # type: ignore
+        conditions = set_order(query, Select(Property))
+        self.assertEqual(str(conditions), str(Select(Property)))

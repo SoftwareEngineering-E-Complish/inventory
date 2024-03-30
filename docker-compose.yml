@@ -2,7 +2,6 @@ services:
   inventory-service-dev:
     build: .
     container_name: inventory-service-dev
-    #command: uvicorn app.main:app --host 0.0.0.0 --port 80 --reload
     command: ["./start.sh"]
     ports:
       - 7200:80 #application
@@ -12,7 +11,7 @@ services:
     depends_on:
       - postgres-db
     environment:
-      DATABASE_URL: "postgresql://postgres:postgres@postgres-db:5432/postgres"
+      DATABASE_URL: ${DATABASE_URL}
       
   postgres-db:
     image: postgres:latest

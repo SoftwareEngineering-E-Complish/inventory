@@ -29,7 +29,7 @@ class Property(BaseModel):
     bathrooms: Optional[int] = None
     square_meters: Optional[int] = None
     year_built: Optional[int] = None
-    property_type: Optional[PropertyType] = Field(None, description="Type of the property")
+    property_type: Optional[PropertyType] = None
 
     done: Optional[bool] = None
 
