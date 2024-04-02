@@ -32,6 +32,7 @@ class Property(BaseModel):
     property_type: Optional[PropertyType] = None
 
     done: Optional[bool] = None
+    owner: Optional[str] = None
 
     # Convert the Property object to a dictionary ensuring that the Enum values are converted to their string representation
     # This is needed to ensure that the Enum values are serialized correctly for DynamoDB
