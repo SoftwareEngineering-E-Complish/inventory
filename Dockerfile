@@ -11,7 +11,7 @@ COPY ./app ./app
 COPY ./start.sh ./start.sh
 
 # TODO: for dev
-COPY ./dynamo_setup/ ./dynamo_setup/
+COPY ./postgres_setup/ ./postgres_setup/
 
 RUN chmod +x ./start.sh
 

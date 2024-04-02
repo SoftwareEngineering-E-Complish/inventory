@@ -1,9 +1,10 @@
 fastapi
 uvicorn
 pydantic
-boto3
 debugpy
 pandas
 jsonref
 pytest
 coverage
+sqlalchemy
+psycopg2-binary
