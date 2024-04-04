@@ -7,8 +7,17 @@ from app.services.property_relational_service import insert_property, fetch_prop
 from app.utils.entity_mapper import schemaToModel, modelToSchema
 from typing import List
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 @app.get("/schema/propertyQuery")
 def get_schema():
