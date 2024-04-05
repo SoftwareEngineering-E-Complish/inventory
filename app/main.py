@@ -3,12 +3,21 @@
 from app.schemas.property import Property
 from app.schemas.property_query import PropertyQuery
 from app.schemas.property_query_paginated import PropertyListPaginated
-from app.services.property_relational_service import insert_property, fetch_property, fetch_all, fetch_by_attributes
+from app.services.property_relational_service import insert_property, fetch_property, fetch_all, fetch_by_attributes, fetch_by_user
 from app.utils.entity_mapper import schemaToModel, modelToSchema
 from typing import List
 from fastapi import FastAPI, HTTPException, Depends
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 @app.get("/schema/propertyQuery")
 def get_schema():
@@ -37,6 +46,14 @@ def query_properties(query: PropertyQuery = Depends(PropertyQuery)):
     for propertyModel in propertiesModel: # type: ignore
         properties.append(modelToSchema(propertyModel))
     return PropertyListPaginated(entries=properties, total=countAll, offset=query.offset, limit=query.limit) #type: ignore
+
+@app.get("/fetchPropertiesByUser", response_model=List[Property], description="Query the properties based on the fields provided")
+def user_properties(userId: str):
+    propertiesModel = fetch_by_user(userId)
+    properties = []
+    for propertyModel in propertiesModel:
+        properties.append(modelToSchema(propertyModel))
+    return properties
 
 @app.post("/properties/", response_model=Property)
 def create_property_listing(property: Property):

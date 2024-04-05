@@ -17,3 +17,4 @@ class Property(Base):
     year_built = Column(Integer)
     property_type = Column(String)
     done = Column(Boolean)
+    owner = Column(String)

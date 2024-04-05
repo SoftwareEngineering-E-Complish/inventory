@@ -29,6 +29,13 @@ def fetch_all():
     db.close()
     return properties
 
+def fetch_by_user(userId: str):
+    db = get_session()
+    statement = select(Property).where(Property.owner == userId)
+    properties = db.execute(statement).scalars().all()
+    db.close()
+    return properties
+
 def fetch_by_attributes(query: PropertyQuery)-> Tuple[Sequence[Property], int]:
     db = get_session()
     count_statement = set_attributes(query, select(func.count()).select_from(Property))
