@@ -1,8 +1,7 @@
 services:
-  inventory-service:
+  inventory-service-dev:
     build: .
-    container_name: inventory-service
-    #command: uvicorn app.main:app --host 0.0.0.0 --port 80 --reload
+    container_name: inventory-service-dev
     command: ["./start.sh"]
     ports:
       - 7200:80 #application
@@ -10,9 +9,16 @@ services:
     volumes:
       - .:/code
     depends_on:
-      - dynamodb-local
-
-  dynamodb-local:
-    image: "amazon/dynamodb-local:latest"
+      - postgres-db
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      
+  postgres-db:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
     ports:
-      - "8000:8000"
+      - "5432:5432"

@@ -2,20 +2,20 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from app.services.property_service import create_property_autoKey
-from app.models.property import Property
+from app.services.property_relational_service import insert_property
+from app.schemas.property import Property
+from app.utils.entity_mapper import schemaToModel
 import pandas as pd
 
 def load_test_data():
     # load and create property instances from the test data
-    df = pd.read_csv('./dynamo_setup/test_data.csv')
-    df['propertyId'] = df['propertyId'].astype(str)
+    df = pd.read_csv('./postgres_setup/test_data.csv')
+    #df['propertyId'] = df['propertyId'].astype(str)
     properties = []
     for _, row in df.iterrows():
         properties.append(Property(**row.to_dict()))
-    # create_property_autoKey(property:Property)
     for property in properties:
-        create_property_autoKey(property)
+        insert_property(schemaToModel(property))
     return
 
 load_test_data()
