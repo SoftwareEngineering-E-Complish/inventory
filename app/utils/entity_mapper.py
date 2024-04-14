@@ -2,8 +2,6 @@ from app.models.property import Property as PropertyModel
 from app.schemas.property import Property as PropertySchema
 from geoalchemy2 import WKTElement
 from geoalchemy2.shape import to_shape
-from shapely.wkt import loads
-from shapely import from_wkt
 from shapely.errors import GEOSException
 
 def schemaToModel(schema: PropertySchema) -> PropertyModel:
