@@ -30,6 +30,8 @@ class Property(BaseModel):
     square_meters: Optional[int] = None
     year_built: Optional[int] = None
     property_type: Optional[PropertyType] = None
+    longitude: Optional[float] = None
+    latitude: Optional[float] = None
 
     done: Optional[bool] = None
     owner: Optional[str] = None

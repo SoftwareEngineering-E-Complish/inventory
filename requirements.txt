@@ -8,3 +8,4 @@ pytest
 coverage
 sqlalchemy
 psycopg2-binary
+geoalchemy2

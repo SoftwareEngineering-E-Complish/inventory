@@ -10,7 +10,6 @@ import pandas as pd
 def load_test_data():
     # load and create property instances from the test data
     df = pd.read_csv('./postgres_setup/test_data.csv')
-    #df['propertyId'] = df['propertyId'].astype(str)
     properties = []
     for _, row in df.iterrows():
         properties.append(Property(**row.to_dict()))
