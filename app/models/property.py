@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Numeric, Enum, Boolean
 from sqlalchemy.orm import declarative_base
+from geoalchemy2 import Geometry
 
 Base = declarative_base()
 
@@ -18,3 +19,4 @@ class Property(Base):
     property_type = Column(String)
     done = Column(Boolean)
     owner = Column(String)
+    location_pin = Column(Geometry(geometry_type='POINT', srid=4326))
