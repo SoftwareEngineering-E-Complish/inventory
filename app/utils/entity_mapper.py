@@ -12,12 +12,14 @@ def schemaToModel(schema: PropertySchema) -> PropertyModel:
     modelProperty.title = schema.title
     modelProperty.description = schema.description
     modelProperty.price = schema.price
-    modelProperty.location = schema.location.value
+    if schema.location:
+        modelProperty.location = schema.location.value
     modelProperty.bedrooms = schema.bedrooms
     modelProperty.bathrooms = schema.bathrooms
     modelProperty.square_meters = schema.square_meters
     modelProperty.year_built = schema.year_built
-    modelProperty.property_type = schema.property_type.value
+    if schema.property_type:
+        modelProperty.property_type = schema.property_type.value
     modelProperty.done = schema.done
     modelProperty.owner = schema.owner
     if schema.latitude and schema.longitude:
