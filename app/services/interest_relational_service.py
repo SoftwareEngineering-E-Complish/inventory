@@ -15,9 +15,8 @@ class InterestService():
     def provide(self, InterestSchema: InterestSchema):
         self.interest = schemaToModelInterest(InterestSchema)
 
-    def declare(self)-> InterestSchema:
+    def declare(self, db=get_session())-> InterestSchema:
         self.interest.timestamp = datetime.now(tz=timezone.utc)
-        db = get_session()
         try:
             db.add(self.interest)
             db.commit()
@@ -29,8 +28,7 @@ class InterestService():
         db.close()
         return modelToSchemaInterest(self.interest)
     
-    def revoke(self):
-        db = get_session()
+    def revoke(self, db=get_session()):
         deletion_target = db.query(InterestModel).filter(
             (InterestModel.propertyId == self.interest.propertyId) &
             (InterestModel.userId == self.interest.userId)
@@ -39,13 +37,12 @@ class InterestService():
             deletion_target.delete()
             db.commit()
             db.close()
-        elif (deletion_target.count() == 0):
+        else : # deletion_target.count() == 0
             db.close()
             detail_literal = f"Item with propertyID {self.interest.propertyId} and user {self.interest.userId} not found";
             raise HTTPException(status_code=404, detail=detail_literal)
         
-    def fetch_by_user(self, userId: str) -> List[InterestSchema]:
-        db = get_session()
+    def fetch_by_user(self, userId: str, db=get_session()) -> List[InterestSchema]:
         interestsModel = db.query(InterestModel).filter(InterestModel.userId == userId).all()
         db.close()
         interests = []
@@ -53,8 +50,7 @@ class InterestService():
             interests.append(modelToSchemaInterest(interestModel))
         return interests
     
-    def fetch_by_property(self, propertyId: int) -> List[InterestSchema]:
-        db = get_session()
+    def fetch_by_property(self, propertyId: int, db=get_session()) -> List[InterestSchema]:
         interestsModel = db.query(InterestModel).filter(InterestModel.propertyId == propertyId).all()
         db.close()
         interests = []
