@@ -3,8 +3,11 @@
 from app.schemas.property import Property
 from app.schemas.property_query import PropertyQuery
 from app.schemas.property_query_paginated import PropertyListPaginated
+from app.schemas.interest import Interest as InterestSchema
 from app.services.property_relational_service import insert_property, fetch_property, fetch_all, fetch_by_attributes, fetch_by_user
+from app.services.interest_relational_service import InterestService
 from app.utils.entity_mapper import schemaToModel, modelToSchema
+
 from typing import List
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
@@ -59,3 +62,26 @@ def user_properties(userId: str):
 def create_property_listing(property: Property):
     property_with_key = insert_property(schemaToModel(property))
     return modelToSchema(property_with_key)
+
+@app.post("/declareInterest", response_model=InterestSchema)
+def declare_interest(interest: InterestSchema):
+    interestService = InterestService()
+    interestService.provide(interest)
+    return interestService.declare()
+
+@app.delete("/removeInterest")
+def remove_interest(interest: InterestSchema):
+    interestService = InterestService()
+    interestService.provide(interest)
+    interestService.revoke()
+    return {"message": "Interest revoked successfully"}
+
+@app.get("/fetchInterestsByUser", response_model=List[InterestSchema])
+def fetch_interests_by_user(userId: str):
+    interestService = InterestService()
+    return interestService.fetch_by_user(userId)
+
+@app.get("/fetchInterestsByProperty", response_model=List[InterestSchema])
+def fetch_interests_by_property(propertyId: int):
+    interestService = InterestService()
+    return interestService.fetch_by_property(propertyId)
