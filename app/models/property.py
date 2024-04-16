@@ -1,8 +1,7 @@
 from sqlalchemy import Column, Integer, String, Numeric, Enum, Boolean
 from sqlalchemy.orm import declarative_base
 from geoalchemy2 import Geometry
-
-Base = declarative_base()
+from app.models.base import Base
 
 class Property(Base):
     __tablename__ = 'property'

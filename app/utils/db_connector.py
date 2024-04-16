@@ -7,10 +7,14 @@ DATABASE_URL = getenv("DATABASE_URL")
 try:
     engine = create_engine(str(DATABASE_URL))
 except:
-    print("No database URL found, db operations not available.")
+    print("Could not connect to DB, db operations not available.")
     pass
 
 
 def get_session():
-    SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    return SessionLocal()
+    try:
+        SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+        return SessionLocal()
+    except: 
+        print("Could not connect to DB, db operations not available.")
+        return None
