@@ -11,49 +11,56 @@ from typing import List
 
 class InterestService():
     interest: InterestModel
+    dbSession = get_session()
+
+    def set_db(self, dbSession):
+        self.dbSession = dbSession
+        return self
 
     def provide(self, InterestSchema: InterestSchema):
         self.interest = schemaToModelInterest(InterestSchema)
+        return self
 
-    def declare(self, db=get_session())-> InterestSchema:
+    def declare(self)-> InterestSchema:
         self.interest.timestamp = datetime.now(tz=timezone.utc)
         try:
-            db.add(self.interest)
-            db.commit()
+            self.dbSession.add(self.interest)
+            self.dbSession.commit()
         except IntegrityError as e:
-            db.rollback()
-            db.close()
+            self.dbSession.rollback()
+            self.dbSession.close()
             raise HTTPException(status_code=409, detail=e._message())
-        db.refresh(self.interest)
-        db.close()
+        self.dbSession.refresh(self.interest)
+        self.dbSession.close()
         return modelToSchemaInterest(self.interest)
     
-    def revoke(self, db=get_session()):
-        deletion_target = db.query(InterestModel).filter(
+    def revoke(self):
+        deletion_target = self.dbSession.query(InterestModel).filter(
             (InterestModel.propertyId == self.interest.propertyId) &
             (InterestModel.userId == self.interest.userId)
         )
         if(deletion_target.count() == 1):
             deletion_target.delete()
-            db.commit()
-            db.close()
+            self.dbSession.commit()
+            self.dbSession.close()
         else : # deletion_target.count() == 0
-            db.close()
+            self.dbSession.close()
             detail_literal = f"Item with propertyID {self.interest.propertyId} and user {self.interest.userId} not found";
             raise HTTPException(status_code=404, detail=detail_literal)
         
-    def fetch_by_user(self, userId: str, db=get_session()) -> List[InterestSchema]:
-        interestsModel = db.query(InterestModel).filter(InterestModel.userId == userId).all()
-        db.close()
+    def fetch_by_user(self, userId: str) -> List[InterestSchema]:
+        interestsModel = self.dbSession.query(InterestModel).filter(InterestModel.userId == userId).all()
+        self.dbSession.close()
         interests = []
         for interestModel in interestsModel:
             interests.append(modelToSchemaInterest(interestModel))
         return interests
     
-    def fetch_by_property(self, propertyId: int, db=get_session()) -> List[InterestSchema]:
-        interestsModel = db.query(InterestModel).filter(InterestModel.propertyId == propertyId).all()
-        db.close()
+    def fetch_by_property(self, propertyId: int) -> List[InterestSchema]:
+        interestsModel = self.dbSession.query(InterestModel).filter(InterestModel.propertyId == propertyId).all()
+        self.dbSession.close()
         interests = []
         for interestModel in interestsModel:
             interests.append(modelToSchemaInterest(interestModel))
         return interests
+    

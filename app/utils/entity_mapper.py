@@ -6,22 +6,22 @@ from shapely.errors import GEOSException
 
 def schemaToModel(schema: PropertySchema) -> PropertyModel:
     modelProperty = PropertyModel()
-    modelProperty.propertyId = schema.propertyId
-    modelProperty.title = schema.title
-    modelProperty.description = schema.description
-    modelProperty.price = schema.price
+    modelProperty.propertyId = schema.propertyId #type: ignore
+    modelProperty.title = schema.title #type: ignore
+    modelProperty.description = schema.description #type: ignore
+    modelProperty.price = schema.price #type: ignore
     if schema.location:
-        modelProperty.location = schema.location.value
-    modelProperty.bedrooms = schema.bedrooms
-    modelProperty.bathrooms = schema.bathrooms
-    modelProperty.square_meters = schema.square_meters
-    modelProperty.year_built = schema.year_built
+        modelProperty.location = schema.location.value #type: ignore
+    modelProperty.bedrooms = schema.bedrooms #type: ignore
+    modelProperty.bathrooms = schema.bathrooms #type: ignore
+    modelProperty.square_meters = schema.square_meters #type: ignore
+    modelProperty.year_built = schema.year_built #type: ignore
     if schema.property_type:
-        modelProperty.property_type = schema.property_type.value
-    modelProperty.done = schema.done
-    modelProperty.owner = schema.owner
+        modelProperty.property_type = schema.property_type.value #type: ignore
+    modelProperty.done = schema.done #type: ignore
+    modelProperty.owner = schema.owner #type: ignore
     if schema.latitude and schema.longitude:
-        modelProperty.location_pin = WKTElement(f"POINT({schema.longitude} {schema.latitude})", srid=4326)
+        modelProperty.location_pin = WKTElement(f"POINT({schema.longitude} {schema.latitude})", srid=4326) #type: ignore
     return modelProperty
 
 def modelToSchema(model: PropertyModel) -> PropertySchema:

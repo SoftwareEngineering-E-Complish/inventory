@@ -20,9 +20,12 @@ class TestInterestService(unittest.TestCase):
         mock_session = create_autospec(Session, instance=True)
 
         # Act
-        interest = InterestService()
-        interest.provide(InterestSchema(propertyId=1, userId="user1", timestamp=None))
-        result = interest.declare(db=mock_session)
+        interestService = InterestService()
+        result = interestService.provide(
+                        InterestSchema(
+                            propertyId=1, 
+                            userId="user1", 
+                            timestamp=None)).set_db(mock_session).declare()
 
         # Assert
         self.assertEqual(result.propertyId, 1)
@@ -35,12 +38,12 @@ class TestInterestService(unittest.TestCase):
         mock_session.add.side_effect = IntegrityError(statement=None, params=None, orig=BaseException(), connection_invalidated=False)
 
         # Act
-        interest = InterestService()
-        interest.provide(InterestSchema(propertyId=1, userId="user1", timestamp=None))
+        interestService = InterestService()
+        interestService.provide(InterestSchema(propertyId=1, userId="user1", timestamp=None)).set_db(mock_session)
 
         # Assert
         with self.assertRaises(HTTPException):
-            interest.declare(db=mock_session)
+            interestService.declare()
 
     def test_revoke_sunny(self):
         # Arrange
@@ -49,9 +52,12 @@ class TestInterestService(unittest.TestCase):
         mock_query.filter.return_value.count.return_value = 1
 
         # Act
-        interest = InterestService()
-        interest.provide(InterestSchema(propertyId=1, userId="user1", timestamp=None))
-        interest.revoke(db=mock_session)
+        interestService = InterestService()
+        interestService.provide(
+                InterestSchema(
+                    propertyId=1, 
+                    userId="user1", 
+                    timestamp=None)).set_db(mock_session).revoke()        
 
         # Assert
         mock_session.commit.assert_called_once()
@@ -63,12 +69,12 @@ class TestInterestService(unittest.TestCase):
         mock_query.filter.return_value.count.return_value = 0
 
         # Act
-        interest = InterestService()
-        interest.provide(InterestSchema(propertyId=1, userId="user1", timestamp=None))
+        interestService = InterestService()
+        interestService.set_db(mock_session).provide(InterestSchema(propertyId=1, userId="user1", timestamp=None))
 
         # Assert
         with self.assertRaises(HTTPException):
-            interest.revoke(db=mock_session)
+            interestService.revoke()
 
     def test_fetch_by_user(self):
         # Arrange
@@ -77,7 +83,7 @@ class TestInterestService(unittest.TestCase):
         mock_query.filter.return_value.all.return_value = [InterestModel(propertyId=1, userId="user1", timestamp=datetime.now(tz=timezone.utc))]
         
         # Act
-        result = InterestService().fetch_by_user("user1", db=mock_session)
+        result = InterestService().set_db(mock_session).fetch_by_user("user1")
 
         # Assert
         self.assertEqual(len(result), 1)
@@ -92,7 +98,7 @@ class TestInterestService(unittest.TestCase):
         mock_query.filter.return_value.all.return_value = [InterestModel(propertyId=1, userId="user1", timestamp=datetime.now(tz=timezone.utc))]
         
         # Act
-        result = InterestService().fetch_by_property(1, db=mock_session)
+        result = InterestService().set_db(mock_session).fetch_by_property(1)
 
         # Assert
         self.assertEqual(len(result), 1)
