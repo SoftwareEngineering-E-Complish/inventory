@@ -7,7 +7,9 @@ from sqlalchemy import Select
 from app.models.property import Property
 from app.schemas.property_query import PropertyQuery , ResultOrder
 from app.schemas.property import PropertyType, SwissCities
-from app.services.property_relational_service import set_attributes, set_pagination, set_order
+from app.services.property_relational_service import set_attributes, set_pagination, set_order, PropertyService
+from unittest.mock import create_autospec
+from sqlalchemy.orm import Session
 
 # This test case is to test the condition expression for the scan operation
 class TestPropertyQuery(unittest.TestCase):
