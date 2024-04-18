@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from app.services.property_relational_service import insert_property
+from app.services.property_relational_service import PropertyService
 from app.services.interest_relational_service import InterestService
 from app.schemas.property import Property
 from app.schemas.interest import Interest
@@ -16,7 +16,8 @@ def load_property_test_data():
     for _, row in df.iterrows():
         properties.append(Property(**row.to_dict()))
     for property in properties:
-        insert_property(schemaToModel(property))
+        propertyService = PropertyService()
+        propertyService.insert_property(schemaToModel(property))
     return
 
 def load_interest_test_data():
