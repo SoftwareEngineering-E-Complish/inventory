@@ -34,7 +34,7 @@ def fetch_all_properties():
         properties.append(modelToSchema(propertyModel))
     return properties
 
-@app.get("/propetries/{property_id}", response_model=Property)
+@app.get("/properties/{property_id}", response_model=Property)
 def fetch_property_by_key(property_id: str):
     id = int(property_id)
     item = PropertyService().fetch_property(id)
