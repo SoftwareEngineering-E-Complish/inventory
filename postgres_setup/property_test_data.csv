@@ -1,33 +1,33 @@
-propertyId,title,description,price,location,bedrooms,bathrooms,square_meters,year_built,property_type,done,owner,latitude,longitude
-13,"Luxury Apartment in Zurich","This is a luxury apartment located in the heart of Zurich.",2000000,"Zurich",3,2,100,2000,"Apartment",True,"testuser1",47.36735015072683, 8.557667531848255
-14,"Spacious House in Geneva","A spacious and beautiful house in Geneva.",3000000,"Geneva",5,3,200,1990,"House",False,"dummyUser2@xyz.com",46.21096258163182, 6.108381183880126
-15,"Cozy Apartment in Bern","A cozy and affordable apartment in Bern.",1500000,"Bern",2,1,80,2005,"Apartment",True,"dummyUser3@xyz.com", 46.93084184855807, 7.426986353222081
-16,"Modern House in Zurich","A modern house with a beautiful view in Zurich.",2500000,"Zurich",4,2,150,2010,"House",False,"testuser1", 47.32735025042683, 8.457667331848245
-17,"Modern Apartment in Geneva","A modern and spacious apartment in Geneva.",1800000,"Geneva",3,2,120,2015,"Apartment",True,"dummyUser2@xyz.com", 46.213373945699516, 6.115425999303815
-18,"Traditional House in Bern","A traditional Swiss house in Bern.",2200000,"Bern",4,2,160,1995,"House",False,"dummyUser3@xyz.com", 46.93556446892001, 7.43353205318489
-19,"Cozy Apartment in Zurich","A cozy apartment in the heart of Zurich.",1400000,"Zurich",2,1,85,2005,"Apartment",True,"dummyUser4@xyz.com", 47.32735025042683, 8.597667331848245
-20,"Luxury House in Geneva","A luxury house with a beautiful view in Geneva.",2800000,"Geneva",5,3,200,2010,"House",False,"dummyUser5@xyz.com", 46.21117370213506, 6.1240226005315295
-21,"Spacious Apartment in Bern","A spacious apartment in Bern.",1600000,"Bern",3,2,110,2007,"Apartment",True,"dummyUser6@xyz.com", 46.93747278243234, 7.430119043203308
-22,"Traditional House in Zurich","A traditional Swiss house in Zurich.",2100000,"Zurich",4,2,150,1998,"House",False,"testuser1",47.34735025042683, 8.597667331848245
-23,"Modern Apartment in Geneva","A modern and affordable apartment in Geneva.",1500000,"Geneva",2,1,90,2010,"Apartment",True,"dummyUser2@xyz.com", 46.208598150005756, 6.1275823962932146
-24,"Luxury House in Bern","A luxury house with a large garden in Bern.",3000000,"Bern",5,3,220,2012,"House",False,"dummyUser3@xyz.com", 46.93996901479684, 7.435300487418841
-25,"Cozy House in Zurich","A cozy house with a beautiful garden in Zurich.",2200000,"Zurich",4,2,160,2000,"House",True,"dummyUser4@xyz.com",47.35735025042683, 8.597667331848245
-26,"Luxury Apartment in Geneva","A luxury apartment with a great view in Geneva.",2800000,"Geneva",3,2,120,2015,"Apartment",False,"dummyUser5@xyz.com", 46.200461475616024, 6.208064413266046
-27,"Spacious House in Bern","A spacious house in a quiet neighborhood in Bern.",2400000,"Bern",5,3,200,1995,"House",True,"dummyUser6@xyz.com", 46.94217420011671, 7.4329116584822605
-28,"Modern Apartment in Zurich","A modern apartment in the heart of Zurich.",1800000,"Zurich",2,1,90,2010,"Apartment",False,"testuser1", 47.35935025042683, 8.597667331848245
-29,"Traditional House in Geneva","A traditional Swiss house in Geneva.",2600000,"Geneva",4,2,150,2005,"House",True,"dummyUser2@xyz.com", 46.20604959634767, 6.126620177430074
-30,"Cozy Apartment in Bern","A cozy apartment with a great view in Bern.",1600000,"Bern",3,2,100,2007,"Apartment",False,"dummyUser3@xyz.com", 46.943462549843076, 7.4412563369218665
-31,"Luxury House in Zurich","A luxury house in a quiet neighborhood in Zurich.",3000000,"Zurich",5,3,220,2012,"House",True,"dummyUser4@xyz.com", 47.35935025042683, 8.577667331848245
-32,"Spacious Apartment in Geneva","A spacious apartment in the heart of Geneva.",2000000,"Geneva",3,2,120,2015,"Apartment",False,"dummyUser5@xyz.com", 46.190914557365446, 6.172196573332358
-33,"Modern House in Bern","A modern house with a large garden in Bern.",2600000,"Bern",4,2,160,2000,"House",True,"dummyUser6@xyz.com", 46.940675583274036, 7.4427372161128265
-34,"Traditional Apartment in Zurich","A traditional Swiss apartment in Zurich.",1800000,"Zurich",2,1,90,2010,"Apartment",False,"testuser1",47.35935025042683, 8.637667331848245
-35,"Cozy House in Geneva","A cozy house with a great view in Geneva.",2400000,"Geneva",4,2,150,2005,"House",True,"dummyUser2@xyz.com", 46.204449176408865, 6.1266791299507455
-36,"Luxury Apartment in Bern","A luxury apartment in a quiet neighborhood in Bern.",2800000,"Bern",3,2,120,2015,"Apartment",False,"dummyUser3@xyz.com", 46.94325061565611, 7.450718510318355
-37,"Spacious House in Zurich","A spacious house in the heart of Zurich.",3000000,"Zurich",5,3,200,1995,"House",True,"dummyUser4@xyz.com", 47.36835128624608, 8.512716598485738
-38,"Modern Apartment in Geneva","A modern apartment with a large garden in Geneva.",2000000,"Geneva",3,2,100,2007,"Apartment",False,"dummyUser5@xyz.com", 46.184622932060265, 6.135416332593847
-39,"Traditional House in Bern","A traditional Swiss house in Bern.",2600000,"Bern",4,2,160,2000,"House",True,"dummyUser6@xyz.com", 46.94791050051332, 7.466747672666789
-40,"Cozy Apartment in Zurich","A cozy apartment in a quiet neighborhood in Zurich.",1800000,"Zurich",2,1,90,2010,"Apartment",False,"testuser1", 47.38585066037041, 8.496748901238119
-41,"Luxury House in Geneva","A luxury house with a great view in Geneva.",3000000,"Geneva",5,3,220,2012,"House",True,"dummyUser2@xyz.com", 46.18850464512744, 6.116653417116894
-42,"Spacious Apartment in Bern","A spacious apartment in the heart of Bern.",2000000,"Bern",3,2,120,2015,"Apartment",False,"dummyUser3@xyz.com", 46.94583005912845, 7.462997496223017
-43,"Modern House in Zurich","A modern house in a quiet neighborhood in Zurich.",2600000,"Zurich",4,2,160,2000,"House",True,"dummyUser4@xyz.com", 47.38385066037041, 8.496748901238119
-44,"Traditional Apartment in Geneva","A traditional Swiss apartment in Geneva.",1800000,"Geneva",2,1,90,2010,"Apartment",False,"dummyUser5@xyz.com",46.18354767730877, 6.143773726206888
+propertyId,title,description,price,location,bedrooms,bathrooms,square_meters,year_built,property_type,done,owner,latitude,longitude,address
+13,"Luxury Apartment in Zurich","This is a luxury apartment located in the heart of Zurich.",2000000,"Zurich",3,2,100,2000,"Apartment",True,"testuser1",47.36735015072683, 8.557667531848255,"1234 Bahnhofstrasse, Zurich"
+14,"Spacious House in Geneva","A spacious and beautiful house in Geneva.",3000000,"Geneva",5,3,200,1990,"House",False,"dummyUser2@xyz.com",46.21096258163182, 6.108381183880126,"1234 Rue de Lausanne, Geneva"
+15,"Cozy Apartment in Bern","A cozy and affordable apartment in Bern.",1500000,"Bern",2,1,80,2005,"Apartment",True,"dummyUser3@xyz.com", 46.93084184855807, 7.426986353222081,"1234 Bahnhofstrasse Bern"
+16,"Modern House in Zurich","A modern house with a beautiful view in Zurich.",2500000,"Zurich",4,2,150,2010,"House",False,"testuser1", 47.32735025042683, 8.457667331848245,"81 Bahnhofstrasse Zurich"
+17,"Modern Apartment in Geneva","A modern and spacious apartment in Geneva.",1800000,"Geneva",3,2,120,2015,"Apartment",True,"dummyUser2@xyz.com", 46.213373945699516, 6.115425999303815 ,"12 Rue de Lausanne Geneva"
+18,"Traditional House in Bern","A traditional Swiss house in Bern.",2200000,"Bern",4,2,160,1995,"House",False,"dummyUser3@xyz.com", 46.93556446892001, 7.43353205318489 ,"123 Rue de Lausanne Bern"
+19,"Cozy Apartment in Zurich","A cozy apartment in the heart of Zurich.",1400000,"Zurich",2,1,85,2005,"Apartment",True,"dummyUser4@xyz.com", 47.32735025042683, 8.597667331848245 ,"34 Bahnhofstrasse Zurich"
+20,"Luxury House in Geneva","A luxury house with a beautiful view in Geneva.",2800000,"Geneva",5,3,200,2010,"House",False,"dummyUser5@xyz.com", 46.21117370213506, 6.1240226005315295 ,"14 Rue de Lausanne Geneva"
+21,"Spacious Apartment in Bern","A spacious apartment in Bern.",1600000,"Bern",3,2,110,2007,"Apartment",True,"dummyUser6@xyz.com", 46.93747278243234, 7.430119043203308 ,"24 Rue de Lausanne Bern"
+22,"Traditional House in Zurich","A traditional Swiss house in Zurich.",2100000,"Zurich",4,2,150,1998,"House",False,"testuser1",47.34735025042683, 8.597667331848245 ,"44 Binzmulestrasse Zurich"
+23,"Modern Apartment in Geneva","A modern and affordable apartment in Geneva.",1500000,"Geneva",2,1,90,2010,"Apartment",True,"dummyUser2@xyz.com", 46.208598150005756, 6.1275823962932146 ,"54 Rue de Lausanne Geneva"
+24,"Luxury House in Bern","A luxury house with a large garden in Bern.",3000000,"Bern",5,3,220,2012,"House",False,"dummyUser3@xyz.com", 46.93996901479684, 7.435300487418841 ,"64 Rue de Lausanne Bern"
+25,"Cozy House in Zurich","A cozy house with a beautiful garden in Zurich.",2200000,"Zurich",4,2,160,2000,"House",True,"dummyUser4@xyz.com",47.35735025042683, 8.597667331848245 ,"94 Binzmulestrasse Zurich"
+26,"Luxury Apartment in Geneva","A luxury apartment with a great view in Geneva.",2800000,"Geneva",3,2,120,2015,"Apartment",False,"dummyUser5@xyz.com", 46.200461475616024, 6.208064413266046 ,"74 Rue de Lausanne Geneva"
+27,"Spacious House in Bern","A spacious house in a quiet neighborhood in Bern.",2400000,"Bern",5,3,200,1995,"House",True,"dummyUser6@xyz.com", 46.94217420011671, 7.4329116584822605 ,"84 Rue de Lausanne Bern"
+28,"Modern Apartment in Zurich","A modern apartment in the heart of Zurich.",1800000,"Zurich",2,1,90,2010,"Apartment",False,"testuser1", 47.35935025042683, 8.597667331848245 ,"104 Binzmulestrasse Zurich"
+29,"Traditional House in Geneva","A traditional Swiss house in Geneva.",2600000,"Geneva",4,2,150,2005,"House",True,"dummyUser2@xyz.com", 46.20604959634767, 6.126620177430074 ,"94 Rue de Lausanne Geneva"
+30,"Cozy Apartment in Bern","A cozy apartment with a great view in Bern.",1600000,"Bern",3,2,100,2007,"Apartment",False,"dummyUser3@xyz.com", 46.943462549843076, 7.4412563369218665 ,"114 Rue de Lausanne Bern"
+31,"Luxury House in Zurich","A luxury house in a quiet neighborhood in Zurich.",3000000,"Zurich",5,3,220,2012,"House",True,"dummyUser4@xyz.com", 47.35935025042683, 8.577667331848245 ,"124 Binzmulestrasse Zurich"
+32,"Spacious Apartment in Geneva","A spacious apartment in the heart of Geneva.",2000000,"Geneva",3,2,120,2015,"Apartment",False,"dummyUser5@xyz.com", 46.190914557365446, 6.172196573332358 ,"134 Rue de Lausanne Geneva"
+33,"Modern House in Bern","A modern house with a large garden in Bern.",2600000,"Bern",4,2,160,2000,"House",True,"dummyUser6@xyz.com", 46.940675583274036, 7.4427372161128265 ,"144 Rue de Lausanne Bern"
+34,"Traditional Apartment in Zurich","A traditional Swiss apartment in Zurich.",1800000,"Zurich",2,1,90,2010,"Apartment",False,"testuser1",47.35935025042683, 8.637667331848245 ,"154 Binzmulestrasse Zurich"
+35,"Cozy House in Geneva","A cozy house with a great view in Geneva.",2400000,"Geneva",4,2,150,2005,"House",True,"dummyUser2@xyz.com", 46.204449176408865, 6.1266791299507455 ,"164 Rue de Lausanne Geneva"
+36,"Luxury Apartment in Bern","A luxury apartment in a quiet neighborhood in Bern.",2800000,"Bern",3,2,120,2015,"Apartment",False,"dummyUser3@xyz.com", 46.94325061565611, 7.450718510318355 ,"174 Rue de Lausanne Bern"
+37,"Spacious House in Zurich","A spacious house in the heart of Zurich.",3000000,"Zurich",5,3,200,1995,"House",True,"dummyUser4@xyz.com", 47.36835128624608, 8.512716598485738 ,"184 Binzmulestrasse Zurich"
+38,"Modern Apartment in Geneva","A modern apartment with a large garden in Geneva.",2000000,"Geneva",3,2,100,2007,"Apartment",False,"dummyUser5@xyz.com", 46.184622932060265, 6.135416332593847 ,"194 Rue de Lausanne Geneva"
+39,"Traditional House in Bern","A traditional Swiss house in Bern.",2600000,"Bern",4,2,160,2000,"House",True,"dummyUser6@xyz.com", 46.94791050051332, 7.466747672666789 ,"204 Rue de Lausanne Bern"
+40,"Cozy Apartment in Zurich","A cozy apartment in a quiet neighborhood in Zurich.",1800000,"Zurich",2,1,90,2010,"Apartment",False,"testuser1", 47.38585066037041, 8.496748901238119 ,"214 Binzmulestrasse Zurich"
+41,"Luxury House in Geneva","A luxury house with a great view in Geneva.",3000000,"Geneva",5,3,220,2012,"House",True,"dummyUser2@xyz.com", 46.18850464512744, 6.116653417116894 ,"224 Rue de Lausanne Geneva"
+42,"Spacious Apartment in Bern","A spacious apartment in the heart of Bern.",2000000,"Bern",3,2,120,2015,"Apartment",False,"dummyUser3@xyz.com", 46.94583005912845, 7.462997496223017 ,"234 Rue de Lausanne Bern"
+43,"Modern House in Zurich","A modern house in a quiet neighborhood in Zurich.",2600000,"Zurich",4,2,160,2000,"House",True,"dummyUser4@xyz.com", 47.38385066037041, 8.496748901238119 ,"244 Binzmulestrasse Zurich"
+44,"Traditional Apartment in Geneva","A traditional Swiss apartment in Geneva.",1800000,"Geneva",2,1,90,2010,"Apartment",False,"dummyUser5@xyz.com",46.18354767730877, 6.143773726206888 ,"254 Rue de Lausanne Geneva"

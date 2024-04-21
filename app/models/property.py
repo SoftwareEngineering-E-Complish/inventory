@@ -18,4 +18,5 @@ class Property(Base):
     property_type = Column(String)
     done = Column(Boolean)
     owner = Column(String)
+    address = Column(String)
     location_pin = Column(Geometry(geometry_type='POINT', srid=4326))

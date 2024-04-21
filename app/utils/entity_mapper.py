@@ -20,6 +20,7 @@ def schemaToModel(schema: PropertySchema) -> PropertyModel:
         modelProperty.property_type = schema.property_type.value #type: ignore
     modelProperty.done = schema.done #type: ignore
     modelProperty.owner = schema.owner #type: ignore
+    modelProperty.address = schema.address #type: ignore
     if schema.latitude and schema.longitude:
         modelProperty.location_pin = WKTElement(f"POINT({schema.longitude} {schema.latitude})", srid=4326) #type: ignore
     return modelProperty
