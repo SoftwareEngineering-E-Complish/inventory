@@ -40,7 +40,7 @@ def fetch_property_by_key(property_id: str):
     item = PropertyService().fetch_property(id)
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
-    return item
+    return modelToSchema(item)
 
 @app.get("/queryProperties", response_model=PropertyListPaginated, description="Query the properties based on the fields provided")
 def query_properties(query: PropertyQuery = Depends(PropertyQuery)):
@@ -62,6 +62,11 @@ def user_properties(userId: str):
 def create_property_listing(property: Property):
     property_with_key = PropertyService().insert_property(schemaToModel(property))
     return modelToSchema(property_with_key)
+
+@app.put("/properties/{property_id}", response_model=Property)
+def update_property_listing(property_id: int, property: Property):
+    updated_property = PropertyService().update_property(property_id, schemaToModel(property))
+    return modelToSchema(updated_property)
 
 @app.post("/declareInterest", response_model=InterestSchema)
 def declare_interest(interest: InterestSchema):
