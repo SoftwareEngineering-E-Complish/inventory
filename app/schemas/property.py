@@ -1,3 +1,4 @@
+
 from pydantic import BaseModel, Field
 from typing import Any, Dict, Optional
 from decimal import Decimal
@@ -30,7 +31,10 @@ class Property(BaseModel):
     square_meters: Optional[int] = None
     year_built: Optional[int] = None
     property_type: Optional[PropertyType] = None
-
+    longitude: Optional[float] = None
+    latitude: Optional[float] = None
+    address: Optional[str] = None
+    
     done: Optional[bool] = None
     owner: Optional[str] = None
 

@@ -14,7 +14,7 @@ services:
       DATABASE_URL: ${DATABASE_URL}
       
   postgres-db:
-    image: postgres:latest
+    image: postgis/postgis:16-3.4
     container_name: postgres
     environment:
       POSTGRES_USER: postgres
