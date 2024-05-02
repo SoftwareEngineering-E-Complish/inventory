@@ -1,3 +1,4 @@
+from re import search
 import unittest
 from unittest.mock import create_autospec
 from sqlalchemy.orm import Session
@@ -26,7 +27,7 @@ class TestPropertyService(unittest.TestCase):
         # Arrange
         mock_session = create_autospec(Session, instance=True)
         mock_session.execute.return_value.scalars.return_value.first.return_value = Property(
-            propertyId=1, price=100000, bedrooms=2, bathrooms=2, square_meters=30, year_built=2000, owner="user1")
+            propertyId=1, price=100000, bedrooms=2, bathrooms=2, square_meters=30, year_built=2000, owner="user1", views=0, searches=0)
 
         # Act
         propertyService = PropertyService()
@@ -39,14 +40,16 @@ class TestPropertyService(unittest.TestCase):
         self.assertEqual(result.bathrooms, 2)
         self.assertEqual(result.square_meters, 30)
         self.assertEqual(result.year_built, 2000)
+        self.assertEqual(result.views, 1)
+        self.assertEqual(result.searches, 0)
         self.assertEqual(result.owner, "user1")
 
     def test_fetch_all(self):
         # Arrange
         mock_session = create_autospec(Session, instance=True)
         mock_session.execute.return_value.scalars.return_value.all.return_value = [
-            Property(propertyId=1, bedrooms=2),
-            Property(propertyId=2, bedrooms=3)]
+            Property(propertyId=1, bedrooms=2, searches=0),
+            Property(propertyId=2, bedrooms=3, searches=0)]
 
         # Act
         propertyService = PropertyService()
@@ -56,6 +59,8 @@ class TestPropertyService(unittest.TestCase):
         self.assertEqual(len(result), 2)
         self.assertEqual(result[0].propertyId, 1)
         self.assertEqual(result[1].propertyId, 2)
+        self.assertEqual(result[0].searches, 1)
+        self.assertEqual(result[1].searches, 1)
 
     def test_fetch_by_user(self):
         # Arrange
@@ -76,8 +81,8 @@ class TestPropertyService(unittest.TestCase):
         mock_session = create_autospec(Session, instance=True)
         mock_session.execute.return_value.scalar.return_value = 2
         mock_session.execute.return_value.scalars.return_value.all.return_value = [
-            Property(propertyId=1, price=100000, bedrooms=2),
-            Property(propertyId=2, price=200000, bedrooms=3)]
+            Property(propertyId=1, price=100000, bedrooms=2, searches=0),
+            Property(propertyId=2, price=200000, bedrooms=3, searches=0)]
         
         # Act
         result, count = PropertyService().set_session(mock_session).fetch_by_attributes(
@@ -87,6 +92,8 @@ class TestPropertyService(unittest.TestCase):
         self.assertEqual(count, 2)
         self.assertEqual(result[0].propertyId, 1)
         self.assertEqual(result[1].propertyId, 2)
+        self.assertEqual(result[0].searches, 1)
+        self.assertEqual(result[1].searches, 1)
 
     def test_update_property(self):
         # Arrange

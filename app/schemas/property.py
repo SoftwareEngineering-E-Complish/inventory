@@ -38,6 +38,9 @@ class Property(BaseModel):
     done: Optional[bool] = None
     owner: Optional[str] = None
 
+    views: Optional[int] = None
+    searches: Optional[int] = None
+
     # Convert the Property object to a dictionary ensuring that the Enum values are converted to their string representation
     # This is needed to ensure that the Enum values are serialized correctly for DynamoDB
     def model_dump(self) -> Dict[str, Any]:
