@@ -20,3 +20,5 @@ class Property(Base):
     owner = Column(String)
     address = Column(String)
     location_pin = Column(Geometry(geometry_type='POINT', srid=4326))
+    views = Column(Integer, default=0)
+    searches = Column(Integer, default=0)

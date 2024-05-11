@@ -42,7 +42,10 @@ http://localhost:7200/docs#/
 Also, for integrating with the LLM service, the Open API spec is published here 
 http://localhost:7200/openapi.json
 
-Currently only create and fetch operations are supported.
+For properties handling, fetch, create and update operations are supported.
+Multiple fetch operations exist, for different views of the site.
+
+Interest Declaration endpoints are implemented as well.
 
 ## Testing
 Sonar Cube executes the tests and test the code coverage automatically whenever develop branch is invoked.
@@ -56,4 +59,5 @@ And produce the code coverage report:
 
 ##  Model
 
-Only a handfull of property attributes like number of bedrooms, bathrooms and location are included in the initial model.
+Support of property attributes like number of bedrooms, bathrooms and location.
+Interest of a user to a property is implemented as well.
